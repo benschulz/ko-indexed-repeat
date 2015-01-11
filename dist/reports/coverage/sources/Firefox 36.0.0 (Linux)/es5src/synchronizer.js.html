@@ -1,0 +1,705 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for es5src/synchronizer.js</title>
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" href="../prettify.css">
+
+    <link rel="stylesheet" href="../base.css">
+    <style type='text/css'>
+        div.coverage-summary .sorter {
+            background-image: url(../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class="header high">
+    <h1>Code coverage report for <span class="entity">es5src/synchronizer.js</span></h1>
+    <h2>
+        
+        Statements: <span class="metric">96.03% <small>(121 / 126)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Branches: <span class="metric">96.15% <small>(25 / 26)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Functions: <span class="metric">100% <small>(22 / 22)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Lines: <span class="metric">96% <small>(120 / 125)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
+    </h2>
+    <div class="path"><a href="../index.html">All files</a> &#187; <a href="index.html">es5src/</a> &#187; synchronizer.js</div>
+</div>
+<div class="body">
+<pre><table class="coverage">
+<tr><td class="line-count">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">20252</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">20252</span>
+<span class="cline-any cline-yes">20252</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">35172</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">35172</span>
+<span class="cline-any cline-yes">35172</span>
+<span class="cline-any cline-yes">35172</span>
+<span class="cline-any cline-yes">35172</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">24</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">32</span>
+<span class="cline-any cline-yes">32</span>
+<span class="cline-any cline-yes">32</span>
+<span class="cline-any cline-yes">32</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">32</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">32</span>
+<span class="cline-any cline-yes">13</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">19</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">19</span>
+<span class="cline-any cline-yes">20292</span>
+<span class="cline-any cline-yes">18</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">13</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">41</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">54</span>
+<span class="cline-any cline-yes">35874</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">35874</span>
+<span class="cline-any cline-yes">45</span>
+<span class="cline-any cline-yes">45</span>
+<span class="cline-any cline-yes">45</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">56194</span>
+<span class="cline-any cline-yes">35884</span>
+<span class="cline-any cline-yes">20310</span>
+<span class="cline-any cline-yes">31</span>
+<span class="cline-any cline-yes">20279</span>
+<span class="cline-any cline-yes">27</span>
+<span class="cline-any cline-yes">20252</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">20251</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">56166</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">35884</span>
+<span class="cline-any cline-yes">35884</span>
+<span class="cline-any cline-yes">35884</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">35884</span>
+<span class="cline-any cline-yes">712</span>
+<span class="cline-any cline-yes">712</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">712</span>
+<span class="cline-any cline-yes">712</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">712</span>
+<span class="cline-any cline-yes">704</span>
+<span class="cline-any cline-yes">712</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">35172</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">31</span>
+<span class="cline-any cline-yes">31</span>
+<span class="cline-any cline-yes">31</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-yes">31</span>
+<span class="cline-any cline-yes">13</span>
+<span class="cline-any cline-yes">13</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">31</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">20251</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">20251</span>
+<span class="cline-any cline-yes">20251</span>
+<span class="cline-any cline-yes">20251</span>
+<span class="cline-any cline-yes">20251</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">20251</span>
+<span class="cline-any cline-yes">20250</span>
+<span class="cline-any cline-yes">20250</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">20250</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">27</span>
+<span class="cline-any cline-yes">27</span>
+<span class="cline-any cline-yes">27</span>
+<span class="cline-any cline-yes">27</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">37</span>
+<span class="cline-any cline-yes">37</span>
+<span class="cline-any cline-yes">37</span>
+<span class="cline-any cline-yes">37</span>
+<span class="cline-any cline-yes">37</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">20251</span>
+<span class="cline-any cline-yes">20251</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">714</span>
+<span class="cline-any cline-yes">714</span>
+<span class="cline-any cline-yes">714</span>
+<span class="cline-any cline-yes">714</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">714</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">24</span>
+<span class="cline-any cline-yes">32</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">32</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">24</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">'use strict';
+&nbsp;
+define(['knockout', './string-hashtable'], function (ko, StringHashtable) {
+&nbsp;
+    var requestAnimationFrame = window.requestAnimationFrame,
+        cancelAnimationFrame = window.cancelAnimationFrame;
+&nbsp;
+    function ElementWithBindingContext(element, bindingContext) {
+        var self = this;
+&nbsp;
+        self.element = element;
+        self.bindingContext = bindingContext;
+    }
+&nbsp;
+    function AddedItem(index, item, id, previousId) {
+        var self = this;
+&nbsp;
+        self.index = index;
+        self.item = item;
+        self.id = id;
+        self.previousId = previousId;
+    }
+&nbsp;
+    return function Synchronizer(configuration, bindingContext) {
+        var self = this,
+        // extract constants from the configuration
+            idSelector = configuration.idSelector,
+            itemVariableName = configuration.itemVariableName,
+            indexVariableName = configuration.indexVariableName,
+            allowDeviation = configuration.allowDeviation,
+            reportDeviation = configuration.reportDeviation,
+            reportSynchronization = configuration.reportSynchronization,
+            parent = configuration.parent,
+            startMarker = configuration.startMarker,
+            endMarker = configuration.endMarker,
+            itemElementTemplate = configuration.itemElementTemplate,
+        // the core state -- when a synchronization is in progress, currentItems may be more current than itemElements
+            currentItems = null,
+            itemElements = new StringHashtable(), // id
+            synchronizedCount = 0, // the number of items for which elements are present in the DOM (may deviate from itemElements.size())
+        // state of the current synchronization (if one is in progress)
+            step = 0, // synchronization step counter
+            cursor = null, // cursor into the DOM for phase one and two (collectNewItemsAndMarkDeados/collectCarcasses)
+            animationFrameRequest = null, // request for the next step, if synchronization is incremental
+            addedItems = null, // items for which no element exists (yet)
+            presumedDead = null, // elements for removed items by id, may contain false positives for moved back items
+            carcasses = null; // elements for definitely removed items (no false positives)
+&nbsp;
+        function startNewSynchronization(newItems) {
+            step = 0;
+            cursor = configuration.startMarker;
+            addedItems = [];
+            presumedDead = new StringHashtable();
+&nbsp;
+            currentItems = newItems;
+&nbsp;
+            if (allowDeviation)
+                initiateIncrementalSynchronization();
+            else
+                performImmediateSynchronization();
+        }
+&nbsp;
+        function performImmediateSynchronization() {
+            while (performSynchronizationStep())
+                ++step;
+            finalizeSynchronization();
+        }
+&nbsp;
+        function initiateIncrementalSynchronization() {
+            performIncrementalSynchronizationStep(new Date().getTime() + 15); // TODO magic number, allow configuration?
+        }
+&nbsp;
+        function resumeIncrementalSynchronization() {
+            performIncrementalSynchronizationStep(new Date().getTime() + 40); // TODO magic number, allow configuration?
+        }
+&nbsp;
+        function performIncrementalSynchronizationStep(timelimit) {
+            while (performSynchronizationStep()) {
+                ++step;
+&nbsp;
+                if (new Date().getTime() &gt; timelimit) {
+                    reportDeviation();
+                    animationFrameRequest = requestAnimationFrame(resumeIncrementalSynchronization);
+                    return;
+                }
+            }
+&nbsp;
+            finalizeSynchronization();
+        }
+&nbsp;
+        function performSynchronizationStep() {
+            if (step &lt; currentItems.length())
+                collectNewItemsAndMarkDeados(step, currentItems.get(step));
+            else if (!carcasses)
+                collectCarcasses();
+            else if (!addedItems.length)
+                return false;
+            else if (configuration.allowElementRecycling &amp;&amp; carcasses.length)
+                performNecromancy(carcasses.pop(), addedItems.shift());
+            else
+                insertElementFor(addedItems.shift());
+&nbsp;
+            return true;
+        }
+&nbsp;
+        function collectNewItemsAndMarkDeados(index, item) {
+            var previousId = index ? idSelector(currentItems.get(index - 1)) : null;
+            var id = idSelector(item);
+            var elementWithBindingContext = itemElements.get(id);
+&nbsp;
+            if (elementWithBindingContext) {
+                elementWithBindingContext.element.style.display = '';
+                elementWithBindingContext.bindingContext[indexVariableName](index);
+&nbsp;
+                var notDeadAfterAll = presumedDead.get(id);
+                <span class="missing-if-branch" title="if path not taken" >I</span>if (notDeadAfterAll) {
+<span class="cstat-no" title="statement not covered" >                    presumedDead.remove(id);</span>
+<span class="cstat-no" title="statement not covered" >                    parent.insertBefore(notDeadAfterAll, cursor.nextSibling);</span>
+<span class="cstat-no" title="statement not covered" >                    cursor = notDeadAfterAll;</span>
+                } else {
+                    while (elementWithBindingContext.element !== cursor.nextSibling)
+                        presumeDead(cursor.nextSibling);
+                    cursor = elementWithBindingContext.element;
+                }
+            } else {
+                addedItems.push(new AddedItem(index, item, id, previousId));
+            }
+        }
+&nbsp;
+        function collectCarcasses() {
+            carcasses = [];
+            var aliveAndKicking = currentItems.length() - addedItems.length;
+            for (var i = synchronizedCount - presumedDead.size - aliveAndKicking; i &gt; 0; --i)
+                presumeDead(cursor.nextSibling);
+            presumedDead.forEach(function (key, element) {
+                itemElements.remove(key);
+                carcasses.push(element);
+            });
+            presumedDead.clear();
+        }
+&nbsp;
+        function performNecromancy(carcass, addedItem) {
+            carcass.style.display = '';
+            insertNodeAfter(carcass, addedItem.previousId);
+            var revivedBindingContext = ko.contextFor(carcass);
+            revivedBindingContext[itemVariableName](addedItem.item);
+            revivedBindingContext[indexVariableName](addedItem.index);
+&nbsp;
+            itemElements.add(addedItem.id, new ElementWithBindingContext(carcass, revivedBindingContext));
+        }
+&nbsp;
+        function insertElementFor(newborn) {
+            var element = itemElementTemplate.cloneNode(true);
+&nbsp;
+            var contextExtension = {};
+            contextExtension[indexVariableName] = ko.observable(newborn.index);
+            contextExtension[itemVariableName] = ko.observable(newborn.item);
+            var newBindingContext = bindingContext.extend(contextExtension);
+&nbsp;
+            itemElements.add(newborn.id, new ElementWithBindingContext(element, newBindingContext));
+            ko.applyBindings(newBindingContext, element);
+            insertNodeAfter(element, newborn.previousId);
+&nbsp;
+            ++synchronizedCount;
+        }
+&nbsp;
+        function finalizeSynchronization() {
+            for (var i = 0; i &lt; carcasses.length; ++i) ko.removeNode(carcasses[i]);
+            synchronizedCount = currentItems.length();
+            reset();
+            reportSynchronization();
+        }
+&nbsp;
+        function abortActiveSynchronization() {
+            cancelAnimationFrame(animationFrameRequest);
+            animationFrameRequest = null;
+&nbsp;
+            for (var i = 0; carcasses !== null &amp;&amp; i &lt; carcasses.length; ++i) {
+<span class="cstat-no" title="statement not covered" >                var element = carcasses[i];</span>
+<span class="cstat-no" title="statement not covered" >                itemElements.add(idFor(element), new ElementWithBindingContext(element, ko.contextFor(element)));</span>
+            }
+&nbsp;
+            reset();
+        }
+&nbsp;
+        function reset() {
+            step = 0;
+            cursor = null;
+            addedItems = null;
+            presumedDead = null;
+            carcasses = null;
+        }
+&nbsp;
+        function insertNodeAfter(node, previousId) {
+            var before = (previousId ? itemElements.get(previousId).element : startMarker).nextSibling;
+            parent.insertBefore(node, before);
+        }
+&nbsp;
+        function presumeDead(element) {
+            presumedDead.add(idFor(element), element);
+            element.style.display = 'none';
+            parent.insertBefore(element, endMarker);
+            return element;
+        }
+&nbsp;
+        function idFor(e) {
+            return idSelector(ko.contextFor(e)[itemVariableName]());
+        }
+&nbsp;
+        self.startOrRestartSynchronization = function (newItems) {
+            if (animationFrameRequest)
+                abortActiveSynchronization();
+            startNewSynchronization(newItems);
+        };
+        self.abortActiveSynchronization = abortActiveSynchronization;
+    };
+});</pre></td></tr>
+</table></pre>
+
+</div>
+<div class="footer">
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Mar 12 2015 18:33:13 GMT+0100 (CET)</div>
+</div>
+
+<script src="../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+
+<script src="../sorter.js"></script>
+</body>
+</html>

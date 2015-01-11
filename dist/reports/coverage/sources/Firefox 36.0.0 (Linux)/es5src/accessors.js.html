@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for es5src/accessors.js</title>
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" href="../prettify.css">
+
+    <link rel="stylesheet" href="../base.css">
+    <style type='text/css'>
+        div.coverage-summary .sorter {
+            background-image: url(../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class="header low">
+    <h1>Code coverage report for <span class="entity">es5src/accessors.js</span></h1>
+    <h2>
+        
+        Statements: <span class="metric">48.15% <small>(13 / 27)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Branches: <span class="metric">20% <small>(1 / 5)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Functions: <span class="metric">41.67% <small>(5 / 12)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Lines: <span class="metric">52.38% <small>(11 / 21)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
+    </h2>
+    <div class="path"><a href="../index.html">All files</a> &#187; <a href="index.html">es5src/</a> &#187; accessors.js</div>
+</div>
+<div class="body">
+<pre><table class="coverage">
+<tr><td class="line-count">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">56252</span>
+<span class="cline-any cline-yes">71741</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">24</span>
+<span class="cline-any cline-yes">24</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">'use strict';
+&nbsp;
+define([], function () {
+    function ArrayAccessor(array) {
+        this.length = function () { return array.length; };
+        this.get = function (index) { return array[index]; };
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    function ListWithLengthMethod(list) {</span>
+<span class="cstat-no" title="statement not covered" >        this.length = <span class="fstat-no" title="function not covered" >function () {</span> <span class="cstat-no" title="statement not covered" >return list.length(); </span>};</span>
+<span class="cstat-no" title="statement not covered" >        this.get = <span class="fstat-no" title="function not covered" >function (index) {</span> <span class="cstat-no" title="statement not covered" >return list.get(index); </span>};</span>
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    function ListWithLengthProperty(list) {</span>
+<span class="cstat-no" title="statement not covered" >        this.length = <span class="fstat-no" title="function not covered" >function () {</span> <span class="cstat-no" title="statement not covered" >return list.length; </span>};</span>
+<span class="cstat-no" title="statement not covered" >        this.get = <span class="fstat-no" title="function not covered" >function (index) {</span> <span class="cstat-no" title="statement not covered" >return list.get(index); </span>};</span>
+    }
+&nbsp;
+    function inferAccessor(arrayOrList) {
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (Array.isArray(arrayOrList))
+            return ArrayAccessor;
+        else
+<span class="cstat-no" title="statement not covered" >            return inferListAccessor(arrayOrList);</span>
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    function inferListAccessor(list) {</span>
+<span class="cstat-no" title="statement not covered" >        var s = typeof list.length;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        switch (typeof list.length) {</span>
+            case 'function':
+<span class="cstat-no" title="statement not covered" >                return ListWithLengthMethod;</span>
+            case 'number':
+<span class="cstat-no" title="statement not covered" >                return ListWithLengthProperty;</span>
+            default:
+<span class="cstat-no" title="statement not covered" >                throw new Error('Unsupported type: The `forEach` value must be an array or a list with a `length` property or method.');</span>
+        }
+    }
+&nbsp;
+    return {
+        inferAccessor: inferAccessor
+    };
+});</pre></td></tr>
+</table></pre>
+
+</div>
+<div class="footer">
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Mar 12 2015 18:33:13 GMT+0100 (CET)</div>
+</div>
+
+<script src="../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+
+<script src="../sorter.js"></script>
+</body>
+</html>
