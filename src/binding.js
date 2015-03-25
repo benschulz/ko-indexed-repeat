@@ -25,7 +25,7 @@ define(['knockout', './accessors', './configuration', './synchronizer'], functio
                 'controlsDescendantBindings': true,
                 'subscribable': ko.computed(function () {
                     var newItems = new Accessor(items());
-                    synchronizer.startOrRestartSynchronization(newItems);
+                    ko.ignoreDependencies(synchronizer.startOrRestartSynchronization, synchronizer, [newItems]);
                 }, null, {
                     'disposeWhenNodeIsRemoved': disposeIndicatorNode
                 })
