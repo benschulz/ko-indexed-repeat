@@ -5,6 +5,7 @@ define(['knockout', './string-hashtable'], function (ko, StringHashtable) {
     var requestAnimationFrame = window.requestAnimationFrame,
         cancelAnimationFrame = window.cancelAnimationFrame;
 
+    /** @constructor */
     function ElementWithBindingContext(element, bindingContext) {
         var self = this;
 
@@ -12,6 +13,7 @@ define(['knockout', './string-hashtable'], function (ko, StringHashtable) {
         self.bindingContext = bindingContext;
     }
 
+    /** @constructor */
     function AddedItem(index, item, id, previousId) {
         var self = this;
 
