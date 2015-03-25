@@ -1,6 +1,6 @@
 'use strict';
 
-define(['knockout', 'jquery', './tester'], function (ko, $, tester) {
+define(['knockout', 'jquery', './tester.test'], function (ko, $, tester) {
 
     describe('Immediate repetition tests:', function () {
         it('The `onSynchronization`-handler should be called, once synchronization is done.', function (done) {

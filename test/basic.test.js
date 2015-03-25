@@ -1,6 +1,6 @@
 'use strict';
 
-define(['knockout', 'jquery', './tester'], function (ko, $, tester) {
+define(['knockout', 'jquery', './tester.test'], function (ko, $, tester) {
 
     describe('Basic repetition tests:', function () {
         describe('The element count should equal the item count', function () {

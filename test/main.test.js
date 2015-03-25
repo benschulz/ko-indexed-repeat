@@ -5,7 +5,7 @@ require(['require', 'chai', 'ko-indexed-repeat'], function (require, chai) {
 
     window.expect = chai.expect;
 
-    require(['basic', 'immediate', 'incremental'], function () {
+    require(['basic.test', 'immediate.test', 'incremental.test'], function () {
         window.__karma__.start();
     });
 

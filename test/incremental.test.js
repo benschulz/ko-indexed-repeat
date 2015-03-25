@@ -1,6 +1,6 @@
 'use strict';
 
-define(['knockout', 'jquery', './tester'], function (ko, $, tester) {
+define(['knockout', 'jquery', './tester.test'], function (ko, $, tester) {
 
     describe('Incremental repetition tests:', function () {
         it('The `onDeviation`-handler should be called, when displayed elements deviate from the underlying items.', function (done) {
