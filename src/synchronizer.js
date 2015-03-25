@@ -93,12 +93,13 @@ define(['knockout', './string-hashtable'], function (ko, StringHashtable) {
                 collectNewItemsAndMarkDeados(step, currentItems.get(step));
             else if (!carcasses)
                 collectCarcasses();
-            else if (!addedItems.length)
-                return false;
-            else if (configuration.allowElementRecycling && carcasses.length)
-                performNecromancy(carcasses.pop(), addedItems.shift());
+            else if (addedItems.length)
+                if (configuration.allowElementRecycling && carcasses.length)
+                    performNecromancy(carcasses.pop(), addedItems.shift());
+                else
+                    insertElementFor(addedItems.shift());
             else
-                insertElementFor(addedItems.shift());
+                return incinerateCarcasses() && false;
 
             return true;
         }
@@ -162,6 +163,11 @@ define(['knockout', './string-hashtable'], function (ko, StringHashtable) {
             insertNodeAfter(element, newborn.previousId);
 
             ++synchronizedCount;
+        }
+
+        function incinerateCarcasses() {
+            while (carcasses.length)
+                ko.removeNode(carcasses.pop());
         }
 
         function finalizeSynchronization() {
