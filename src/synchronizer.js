@@ -177,18 +177,6 @@ define(['knockout', './string-hashtable'], function (ko, StringHashtable) {
             reportSynchronization();
         }
 
-        function abortActiveSynchronization() {
-            cancelAnimationFrame(animationFrameRequest);
-            animationFrameRequest = null;
-
-            for (var i = 0; carcasses !== null && i < carcasses.length; ++i) {
-                var element = carcasses[i];
-                itemElements.add(idFor(element), new ElementWithBindingContext(element, ko.contextFor(element)));
-            }
-
-            reset();
-        }
-
         function reset() {
             step = 0;
             cursor = null;
@@ -214,10 +202,25 @@ define(['knockout', './string-hashtable'], function (ko, StringHashtable) {
         }
 
         self.startOrRestartSynchronization = function (newItems) {
-            if (animationFrameRequest)
-                abortActiveSynchronization();
+            abortActiveSynchronization();
             startNewSynchronization(newItems);
         };
+
         self.abortActiveSynchronization = abortActiveSynchronization;
+
+        function abortActiveSynchronization() {
+            if (!animationFrameRequest)
+                return;
+
+            cancelAnimationFrame(animationFrameRequest);
+            animationFrameRequest = null;
+
+            for (var i = 0; carcasses !== null && i < carcasses.length; ++i) {
+                var element = carcasses[i];
+                itemElements.add(idFor(element), new ElementWithBindingContext(element, ko.contextFor(element)));
+            }
+
+            reset();
+        }
     };
 });
