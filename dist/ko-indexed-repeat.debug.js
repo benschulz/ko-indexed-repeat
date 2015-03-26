@@ -146,12 +146,14 @@ ko_indexed_repeat_string_hashtable = function () {
 }();
 
 ko_indexed_repeat_synchronizer = function (ko, StringHashtable) {
-  var requestAnimationFrame = window.requestAnimationFrame, cancelAnimationFrame = window.cancelAnimationFrame;
+  var requestAnimationFrame = window.requestAnimationFrame.bind(window), cancelAnimationFrame = window.cancelAnimationFrame.bind(window);
+  /** @constructor */
   function ElementWithBindingContext(element, bindingContext) {
     var self = this;
     self.element = element;
     self.bindingContext = bindingContext;
   }
+  /** @constructor */
   function AddedItem(index, item, id, previousId) {
     var self = this;
     self.index = index;
@@ -219,12 +221,13 @@ ko_indexed_repeat_synchronizer = function (ko, StringHashtable) {
         collectNewItemsAndMarkDeados(step, currentItems.get(step));
       else if (!carcasses)
         collectCarcasses();
-      else if (!addedItems.length)
-        return false;
-      else if (configuration.allowElementRecycling && carcasses.length)
-        performNecromancy(carcasses.pop(), addedItems.shift());
+      else if (addedItems.length)
+        if (configuration.allowElementRecycling && carcasses.length)
+          performNecromancy(carcasses.pop(), addedItems.shift());
+        else
+          insertElementFor(addedItems.shift());
       else
-        insertElementFor(addedItems.shift());
+        return incinerateCarcasses() && false;
       return true;
     }
     function collectNewItemsAndMarkDeados(index, item) {
@@ -278,21 +281,16 @@ ko_indexed_repeat_synchronizer = function (ko, StringHashtable) {
       insertNodeAfter(element, newborn.previousId);
       ++synchronizedCount;
     }
+    function incinerateCarcasses() {
+      while (carcasses.length)
+        ko.removeNode(carcasses.pop());
+    }
     function finalizeSynchronization() {
       for (var i = 0; i < carcasses.length; ++i)
         ko.removeNode(carcasses[i]);
       synchronizedCount = currentItems.length();
       reset();
       reportSynchronization();
-    }
-    function abortActiveSynchronization() {
-      cancelAnimationFrame(animationFrameRequest);
-      animationFrameRequest = null;
-      for (var i = 0; carcasses !== null && i < carcasses.length; ++i) {
-        var element = carcasses[i];
-        itemElements.add(idFor(element), new ElementWithBindingContext(element, ko.contextFor(element)));
-      }
-      reset();
     }
     function reset() {
       step = 0;
@@ -315,11 +313,21 @@ ko_indexed_repeat_synchronizer = function (ko, StringHashtable) {
       return idSelector(ko.contextFor(e)[itemVariableName]());
     }
     self.startOrRestartSynchronization = function (newItems) {
-      if (animationFrameRequest)
-        abortActiveSynchronization();
+      abortActiveSynchronization();
       startNewSynchronization(newItems);
     };
     self.abortActiveSynchronization = abortActiveSynchronization;
+    function abortActiveSynchronization() {
+      if (!animationFrameRequest)
+        return;
+      cancelAnimationFrame(animationFrameRequest);
+      animationFrameRequest = null;
+      for (var i = 0; carcasses !== null && i < carcasses.length; ++i) {
+        var element = carcasses[i];
+        itemElements.add(idFor(element), new ElementWithBindingContext(element, ko.contextFor(element)));
+      }
+      reset();
+    }
   };
 }(knockout, ko_indexed_repeat_string_hashtable);
 
@@ -343,7 +351,7 @@ ko_indexed_repeat_binding = function (ko, accessors, Configuration, Synchronizer
         'controlsDescendantBindings': true,
         'subscribable': ko.computed(function () {
           var newItems = new Accessor(items());
-          synchronizer.startOrRestartSynchronization(newItems);
+          ko.ignoreDependencies(synchronizer.startOrRestartSynchronization, synchronizer, [newItems]);
         }, null, { 'disposeWhenNodeIsRemoved': disposeIndicatorNode })
       };
     }
