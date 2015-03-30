@@ -16,6 +16,6 @@
     "url": "http://github.com/benschulz/ko-indexed-repeat.git"
   },
   "dependencies": {
-    "knockout": "^3.2.0"
+    "knockout": "^3.3.0"
   }
 }
