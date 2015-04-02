@@ -1,3 +1,5 @@
+# ko-indexed-repeat
+
 **ko-indexed-repeat** provides a [knockout](http://knockoutjs.com/) binding called `indexedRepeat`. In functionality it
 is similar to the `foreach` binding. The main difference is that `indexedRepeat` tries to minimize the amount of DOM
 manipulation in an effort to provide a smooth user experience. Beyond that it allows for incremental synchronization
@@ -6,7 +8,7 @@ between view model and view.
 To reduce DOM activity `indexedRepeat` does not rely on `arrayChange` events, but rather a user-defined unique index *i:
 item→string*.
 
-##Options
+## Binding Value
 
 ### forEach
 
@@ -20,39 +22,41 @@ list with a `length` property.
 
 ### indexedBy
 
-**Required**. A function defining a unique index for all potential items. Functions of the form `function(x) { return
-x.id; }` may be abbreviated by the string denoting the property's name, in this case `'id'`.
+**Required**. A function defining a unique index for all potential items.
+
+Functions of the form `function(x) { return x.id; }` may be abbreviated by the string denoting the property's name,
+in this case `'id'`. Values returned by the indexing function *must* be of type `string`.
 
 ### as
 
-**Optional**, defaults to `'$item'`. Defines the variable name under which the current item is accessible in binding
+**Optional**. defaults to `'$item'`. Defines the variable name under which the current item is accessible in binding
 strings of the repeated elements and their descendants.
 
 ### at
 
-**Optional**, defaults to `'$index'`. Defines the variable name under which the current item's index is accessible in
+**Optional**. defaults to `'$index'`. Defines the variable name under which the current item's index is accessible in
 binding strings of the repeated elements and their descendants.
 
 ### allowDeviation
 
-**Optional**, defaults to `false`. Defines whether the displayed items (DOM) may deviate from the actual items
+**Optional**. defaults to `false`. Defines whether the displayed items (DOM) may deviate from the actual items
 (view model). The DOM will only deviate when it can not be synchronized quickly enough to avoid UI lock-up.
 
 ### onDeviation
 
-**Optional**, defaults to `function() {}`. Defines a handler function to be called whenever the displayed items deviate
+**Optional**. defaults to `function() {}`. Defines a handler function to be called whenever the displayed items deviate
 from the actual items. This option is irrelevant unless `allowDeviation` is set to `true`.
 
 ### onSynchronization
 
-**Optional**, defaults to `function() {}`. Defines a handler function to be called whenever the displayed items have
+**Optional**. defaults to `function() {}`. Defines a handler function to be called whenever the displayed items have
 been synchronized with the actual items. The handler will still be called if `allowDeviation` is set to `false`.
 
 ### data-repeat-bind (attribute)
 
 **Optional**. Declares bindings to be applied to each repeated element.
 
-##Example
+## Example
 
 ```html
 <div
