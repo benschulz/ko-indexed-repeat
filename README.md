@@ -29,27 +29,39 @@ in this case `'id'`. Values returned by the indexing function *must* be of type 
 
 ### as
 
-**Optional**. defaults to `'$item'`. Defines the variable name under which the current item is accessible in binding
+**Optional**. Defaults to `'$item'`. Defines the variable name under which the current item is accessible in binding
 strings of the repeated elements and their descendants.
 
 ### at
 
-**Optional**. defaults to `'$index'`. Defines the variable name under which the current item's index is accessible in
+**Optional**. Defaults to `'$index'`. Defines the variable name under which the current item's index is accessible in
 binding strings of the repeated elements and their descendants.
+
+### allowElementRecycling
+
+**Optional**. Defaults to `true`. When set to `false` new elements created even when some just freed up.
+
+### beforeElementRecycling
+
+**Optional**. A handler called immediately *before* an element is recycled. The arguments are the element to be recycled and the elements binding context.
+
+### afterElementRecycled
+
+**Optional**. A handler called immediately *after* an element has been recycled. The arguments are the element to be recycled and the elements binding context.
 
 ### allowDeviation
 
-**Optional**. defaults to `false`. Defines whether the displayed items (DOM) may deviate from the actual items
+**Optional**. Defaults to `false`. Defines whether the displayed items (DOM) may deviate from the actual items
 (view model). The DOM will only deviate when it can not be synchronized quickly enough to avoid UI lock-up.
 
 ### onDeviation
 
-**Optional**. defaults to `function() {}`. Defines a handler function to be called whenever the displayed items deviate
+**Optional**. Defaults to `function() {}`. Defines a handler function to be called whenever the displayed items deviate
 from the actual items. This option is irrelevant unless `allowDeviation` is set to `true`.
 
 ### onSynchronization
 
-**Optional**. defaults to `function() {}`. Defines a handler function to be called whenever the displayed items have
+**Optional**. Defaults to `function() {}`. Defines a handler function to be called whenever the displayed items have
 been synchronized with the actual items. The handler will still be called if `allowDeviation` is set to `false`.
 
 ### data-repeat-bind (attribute)

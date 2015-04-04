@@ -143,12 +143,13 @@ define(['knockout', './string-hashtable'], function (ko, StringHashtable) {
         }
 
         function performNecromancy(carcass, addedItem) {
+            var revivedBindingContext = ko.contextFor(carcass);
+            configuration.reportElementRecycling(carcass, revivedBindingContext);
             carcass.style.display = '';
             insertNodeAfter(carcass, addedItem.previousId);
-            var revivedBindingContext = ko.contextFor(carcass);
             revivedBindingContext[itemVariableName](addedItem.item);
             revivedBindingContext[indexVariableName](addedItem.index);
-
+            configuration.reportElementRecycled(carcass, revivedBindingContext);
             itemElements.add(addedItem.id, new ElementWithBindingContext(carcass, revivedBindingContext));
         }
 

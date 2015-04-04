@@ -60,6 +60,8 @@ ko_indexed_repeat_configuration = function (ko) {
   var OPTION_AS = 'as';
   var OPTION_AT = 'at';
   var OPTION_ALLOW_ELEMENT_RECYCLING = 'allowElementRecycling';
+  var OPTION_BEFORE_ELEMENT_RECYCLYING = 'beforeElementRecycling';
+  var OPTION_AFTER_ELEMENT_RECYCLED = 'afterElementRecycled';
   var OPTION_ALLOW_DEVIATION = 'allowDeviation';
   var OPTION_ON_DEVIATION = 'onDeviation';
   var OPTION_ON_SYNCHRONIZATION = 'onSynchronization';
@@ -95,6 +97,10 @@ ko_indexed_repeat_configuration = function (ko) {
     self.itemVariableName = value[OPTION_AS] || '$item';
     self.indexVariableName = value[OPTION_AT] || '$index';
     self.allowElementRecycling = value[OPTION_ALLOW_ELEMENT_RECYCLING] !== false;
+    self.reportElementRecycling = value[OPTION_BEFORE_ELEMENT_RECYCLYING] || function () {
+    };
+    self.reportElementRecycled = value[OPTION_AFTER_ELEMENT_RECYCLED] || function () {
+    };
     self.allowDeviation = value[OPTION_ALLOW_DEVIATION] === true;
     self.reportDeviation = value[OPTION_ON_DEVIATION] || function () {
     };
@@ -263,11 +269,13 @@ ko_indexed_repeat_synchronizer = function (ko, StringHashtable) {
       presumedDead.clear();
     }
     function performNecromancy(carcass, addedItem) {
+      var revivedBindingContext = ko.contextFor(carcass);
+      configuration.reportElementRecycling(carcass, revivedBindingContext);
       carcass.style.display = '';
       insertNodeAfter(carcass, addedItem.previousId);
-      var revivedBindingContext = ko.contextFor(carcass);
       revivedBindingContext[itemVariableName](addedItem.item);
       revivedBindingContext[indexVariableName](addedItem.index);
+      configuration.reportElementRecycled(carcass, revivedBindingContext);
       itemElements.add(addedItem.id, new ElementWithBindingContext(carcass, revivedBindingContext));
     }
     function insertElementFor(newborn) {

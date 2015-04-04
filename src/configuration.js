@@ -5,6 +5,8 @@ define(['knockout'], function (ko) {
     var OPTION_AS = 'as';
     var OPTION_AT = 'at';
     var OPTION_ALLOW_ELEMENT_RECYCLING = 'allowElementRecycling';
+    var OPTION_BEFORE_ELEMENT_RECYCLYING = 'beforeElementRecycling';
+    var OPTION_AFTER_ELEMENT_RECYCLED = 'afterElementRecycled';
     var OPTION_ALLOW_DEVIATION = 'allowDeviation';
     var OPTION_ON_DEVIATION = 'onDeviation';
     var OPTION_ON_SYNCHRONIZATION = 'onSynchronization';
@@ -48,6 +50,8 @@ define(['knockout'], function (ko) {
         self.itemVariableName = value[OPTION_AS] || '$item';
         self.indexVariableName = value[OPTION_AT] || '$index';
         self.allowElementRecycling = value[OPTION_ALLOW_ELEMENT_RECYCLING] !== false;
+        self.reportElementRecycling = value[OPTION_BEFORE_ELEMENT_RECYCLYING] || function () {};
+        self.reportElementRecycled = value[OPTION_AFTER_ELEMENT_RECYCLED] || function () {};
         self.allowDeviation = value[OPTION_ALLOW_DEVIATION] === true;
         self.reportDeviation = value[OPTION_ON_DEVIATION] || function () {};
         self.reportSynchronization = value[OPTION_ON_SYNCHRONIZATION] || function () {};
