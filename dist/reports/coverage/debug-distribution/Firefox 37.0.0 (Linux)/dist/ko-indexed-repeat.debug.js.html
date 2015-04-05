@@ -1,0 +1,1158 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for dist/ko-indexed-repeat.debug.js</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../prettify.css">
+    <link rel="stylesheet" href="../base.css">
+    <style type='text/css'>
+        div.coverage-summary .sorter {
+            background-image: url(../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class="header high">
+    <h1>Code coverage report for <span class="entity">dist/ko-indexed-repeat.debug.js</span></h1>
+    <h2>
+        Statements: <span class="metric">90.84% <small>(228 / 251)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Branches: <span class="metric">82.54% <small>(52 / 63)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Functions: <span class="metric">88.33% <small>(53 / 60)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">90.84% <small>(228 / 251)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
+    </h2>
+    <div class="path"><a href="../index.html">All files</a> &#187; <a href="index.html">dist/</a> &#187; ko-indexed-repeat.debug.js</div>
+</div>
+<div class="body">
+<pre><table class="coverage">
+<tr><td class="line-count">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342
+343
+344
+345
+346
+347
+348
+349
+350
+351
+352
+353
+354
+355
+356
+357
+358
+359
+360
+361
+362
+363
+364
+365
+366
+367
+368
+369
+370
+371
+372</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">32</span>
+<span class="cline-any cline-yes">56438</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">32</span>
+<span class="cline-any cline-yes">72011</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">24</span>
+<span class="cline-any cline-yes">24</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">24</span>
+<span class="cline-any cline-yes">23</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">24</span>
+<span class="cline-any cline-yes">24</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">24</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">24</span>
+<span class="cline-any cline-yes">24</span>
+<span class="cline-any cline-yes">24</span>
+<span class="cline-any cline-yes">24</span>
+<span class="cline-any cline-yes">24</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">24</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">24</span>
+<span class="cline-any cline-yes">24</span>
+<span class="cline-any cline-yes">24</span>
+<span class="cline-any cline-yes">24</span>
+<span class="cline-any cline-yes">24</span>
+<span class="cline-any cline-yes">24</span>
+<span class="cline-any cline-yes">24</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">24</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">24</span>
+<span class="cline-any cline-yes">24</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">24</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">24</span>
+<span class="cline-any cline-yes">24</span>
+<span class="cline-any cline-yes">24</span>
+<span class="cline-any cline-yes">24</span>
+<span class="cline-any cline-yes">24</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">56</span>
+<span class="cline-any cline-yes">56</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">21152</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">21151</span>
+<span class="cline-any cline-yes">21151</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">57145</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">13</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">13</span>
+<span class="cline-any cline-yes">13</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">31</span>
+<span class="cline-any cline-yes">31</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">31</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">31</span>
+<span class="cline-any cline-yes">13</span>
+<span class="cline-any cline-yes">13</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">20303</span>
+<span class="cline-any cline-yes">20303</span>
+<span class="cline-any cline-yes">20303</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">35172</span>
+<span class="cline-any cline-yes">35172</span>
+<span class="cline-any cline-yes">35172</span>
+<span class="cline-any cline-yes">35172</span>
+<span class="cline-any cline-yes">35172</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">24</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">32</span>
+<span class="cline-any cline-yes">32</span>
+<span class="cline-any cline-yes">32</span>
+<span class="cline-any cline-yes">32</span>
+<span class="cline-any cline-yes">32</span>
+<span class="cline-any cline-yes">32</span>
+<span class="cline-any cline-yes">13</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">19</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">19</span>
+<span class="cline-any cline-yes">20292</span>
+<span class="cline-any cline-yes">18</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">13</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">37</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">50</span>
+<span class="cline-any cline-yes">36060</span>
+<span class="cline-any cline-yes">36060</span>
+<span class="cline-any cline-yes">41</span>
+<span class="cline-any cline-yes">41</span>
+<span class="cline-any cline-yes">41</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">56380</span>
+<span class="cline-any cline-yes">36019</span>
+<span class="cline-any cline-yes">20361</span>
+<span class="cline-any cline-yes">31</span>
+<span class="cline-any cline-yes">20330</span>
+<span class="cline-any cline-yes">20303</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">20302</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">27</span>
+<span class="cline-any cline-yes">56352</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">36019</span>
+<span class="cline-any cline-yes">36019</span>
+<span class="cline-any cline-yes">36019</span>
+<span class="cline-any cline-yes">36019</span>
+<span class="cline-any cline-yes">847</span>
+<span class="cline-any cline-yes">847</span>
+<span class="cline-any cline-yes">847</span>
+<span class="cline-any cline-yes">847</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">847</span>
+<span class="cline-any cline-yes">839</span>
+<span class="cline-any cline-yes">847</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">35172</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">31</span>
+<span class="cline-any cline-yes">31</span>
+<span class="cline-any cline-yes">31</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-yes">31</span>
+<span class="cline-any cline-yes">13</span>
+<span class="cline-any cline-yes">13</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">31</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">20302</span>
+<span class="cline-any cline-yes">20302</span>
+<span class="cline-any cline-yes">20302</span>
+<span class="cline-any cline-yes">20302</span>
+<span class="cline-any cline-yes">20302</span>
+<span class="cline-any cline-yes">20302</span>
+<span class="cline-any cline-yes">20301</span>
+<span class="cline-any cline-yes">20301</span>
+<span class="cline-any cline-yes">20301</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">27</span>
+<span class="cline-any cline-yes">12</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">27</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">27</span>
+<span class="cline-any cline-yes">27</span>
+<span class="cline-any cline-yes">27</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">33</span>
+<span class="cline-any cline-yes">33</span>
+<span class="cline-any cline-yes">33</span>
+<span class="cline-any cline-yes">33</span>
+<span class="cline-any cline-yes">33</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">20302</span>
+<span class="cline-any cline-yes">20302</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">849</span>
+<span class="cline-any cline-yes">849</span>
+<span class="cline-any cline-yes">849</span>
+<span class="cline-any cline-yes">849</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">849</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">24</span>
+<span class="cline-any cline-yes">32</span>
+<span class="cline-any cline-yes">32</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">24</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">41</span>
+<span class="cline-any cline-yes">35</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">24</span>
+<span class="cline-any cline-yes">24</span>
+<span class="cline-any cline-yes">24</span>
+<span class="cline-any cline-yes">24</span>
+<span class="cline-any cline-yes">24</span>
+<span class="cline-any cline-yes">24</span>
+<span class="cline-any cline-yes">24</span>
+<span class="cline-any cline-yes">9</span>
+<span class="cline-any cline-yes">9</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">24</span>
+<span class="cline-any cline-yes">24</span>
+<span class="cline-any cline-yes">24</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">32</span>
+<span class="cline-any cline-yes">32</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
+ * @license Copyright (c) 2015, Ben Schulz
+ * License: BSD 3-clause (http://opensource.org/licenses/BSD-3-Clause)
+ */
+;(function(factory) {
+    <span class="missing-if-branch" title="else path not taken" >E</span>if (typeof define === 'function' &amp;&amp; define['amd'])
+        define(['knockout'], factory);
+    else
+<span class="cstat-no" title="statement not covered" >        window['ko-indexed-repeat'] = factory(window.ko);</span>
+} (function(knockout) {
+var ko_indexed_repeat_accessors, ko_indexed_repeat_configuration, ko_indexed_repeat_string_hashtable, ko_indexed_repeat_synchronizer, ko_indexed_repeat_binding, ko_indexed_repeat;
+&nbsp;
+ko_indexed_repeat_accessors = function () {
+  function ArrayAccessor(array) {
+    this.length = function () {
+      return array.length;
+    };
+    this.get = function (index) {
+      return array[index];
+    };
+  }
+<span class="fstat-no" title="function not covered" >  function ListWithLengthMethod(list) {</span>
+<span class="cstat-no" title="statement not covered" >    this.length = <span class="fstat-no" title="function not covered" >function () {</span></span>
+<span class="cstat-no" title="statement not covered" >      return list.length();</span>
+    };
+<span class="cstat-no" title="statement not covered" >    this.get = <span class="fstat-no" title="function not covered" >function (index) {</span></span>
+<span class="cstat-no" title="statement not covered" >      return list.get(index);</span>
+    };
+  }
+<span class="fstat-no" title="function not covered" >  function ListWithLengthProperty(list) {</span>
+<span class="cstat-no" title="statement not covered" >    this.length = <span class="fstat-no" title="function not covered" >function () {</span></span>
+<span class="cstat-no" title="statement not covered" >      return list.length;</span>
+    };
+<span class="cstat-no" title="statement not covered" >    this.get = <span class="fstat-no" title="function not covered" >function (index) {</span></span>
+<span class="cstat-no" title="statement not covered" >      return list.get(index);</span>
+    };
+  }
+  function inferAccessor(arrayOrList) {
+    <span class="missing-if-branch" title="else path not taken" >E</span>if (Array.isArray(arrayOrList))
+      return ArrayAccessor;
+    else
+<span class="cstat-no" title="statement not covered" >      return inferListAccessor(arrayOrList);</span>
+  }
+<span class="fstat-no" title="function not covered" >  function inferListAccessor(list) {</span>
+<span class="cstat-no" title="statement not covered" >    var s = typeof list.length;</span>
+<span class="cstat-no" title="statement not covered" >    switch (typeof list.length) {</span>
+    case 'function':
+<span class="cstat-no" title="statement not covered" >      return ListWithLengthMethod;</span>
+    case 'number':
+<span class="cstat-no" title="statement not covered" >      return ListWithLengthProperty;</span>
+    default:
+<span class="cstat-no" title="statement not covered" >      throw new Error('Unsupported type: The `forEach` value must be an array or a list with a `length` property or method.');</span>
+    }
+  }
+  return { inferAccessor: inferAccessor };
+}();
+&nbsp;
+ko_indexed_repeat_configuration = function (ko) {
+  var OPTION_INDEXED_BY = 'indexedBy';
+  var OPTION_AS = 'as';
+  var OPTION_AT = 'at';
+  var OPTION_ALLOW_ELEMENT_RECYCLING = 'allowElementRecycling';
+  var OPTION_BEFORE_ELEMENT_RECYCLYING = 'beforeElementRecycling';
+  var OPTION_AFTER_ELEMENT_RECYCLED = 'afterElementRecycled';
+  var OPTION_ALLOW_DEVIATION = 'allowDeviation';
+  var OPTION_ON_DEVIATION = 'onDeviation';
+  var OPTION_ON_SYNCHRONIZATION = 'onSynchronization';
+  var document = window.document;
+  function selectorFunction(propertyNameOrSelectorFunction) {
+    if (typeof propertyNameOrSelectorFunction === 'function')
+      return propertyNameOrSelectorFunction;
+    else <span class="missing-if-branch" title="else path not taken" >E</span>if (typeof propertyNameOrSelectorFunction === 'string')
+      return function (item) {
+        return item[propertyNameOrSelectorFunction];
+      };
+<span class="cstat-no" title="statement not covered" >    throw new Error('A repeat-binding must specify and indexedBy of type string (property name) or function (custom selector).');</span>
+  }
+  function prepareItemTemplate(element) {
+    ko.cleanNode(element);
+    window.setTimeout(function () {
+      // for some reason, the above cleanNode is insufficient, probably because applyBindingsToNode
+      // sets up part of the state after calling init (and thus the cleanNode above)
+      ko.cleanNode(element);
+    }, 1);
+    var itemTemplate = element.cloneNode(true);
+    itemTemplate.removeAttribute('data-bind');
+    <span class="missing-if-branch" title="else path not taken" >E</span>if (typeof element.getAttribute('data-repeat-bind') === 'string') {
+      itemTemplate.setAttribute('data-bind', element.getAttribute('data-repeat-bind'));
+      itemTemplate.removeAttribute('data-repeat-bind');
+    }
+    return itemTemplate;
+  }
+  return function Configuration(element, value) {
+    var self = this;
+    var bindingString = element.getAttribute('data-bind');
+    self.idSelector = selectorFunction(value[OPTION_INDEXED_BY]);
+    self.itemVariableName = value[OPTION_AS] || '$item';
+    self.indexVariableName = value[OPTION_AT] || '$index';
+    self.allowElementRecycling = value[OPTION_ALLOW_ELEMENT_RECYCLING] !== false;
+    self.reportElementRecycling = value[OPTION_BEFORE_ELEMENT_RECYCLYING] || function () {
+    };
+    self.reportElementRecycled = value[OPTION_AFTER_ELEMENT_RECYCLED] || function () {
+    };
+    self.allowDeviation = value[OPTION_ALLOW_DEVIATION] === true;
+    self.reportDeviation = value[OPTION_ON_DEVIATION] || function () {
+    };
+    self.reportSynchronization = value[OPTION_ON_SYNCHRONIZATION] || function () {
+    };
+    self.parent = element.parentNode;
+    self.startMarker = document.createComment('[repeat(' + bindingString + ')');
+    self.endMarker = document.createComment('repeat(' + bindingString + ')]');
+    self.itemElementTemplate = prepareItemTemplate(element);
+    self.disposeIndicatorNode = self.startMarker;
+  };
+}(knockout);
+&nbsp;
+ko_indexed_repeat_string_hashtable = function () {
+  function StringHashtable() {
+    this._size = 0;
+    this._hashtable = {};
+  }
+  StringHashtable.prototype = {
+    add: function (k, v) {
+      if (Object.prototype.hasOwnProperty.call(this._hashtable, k))
+        throw new Error('Key `' + k + '` is already taken.');
+      ++this._size;
+      this._hashtable[k] = v;
+    },
+    get: function (k) {
+      return this._hashtable[k];
+    },
+    remove: function (k) {
+      <span class="missing-if-branch" title="if path not taken" >I</span>if (!Object.prototype.hasOwnProperty.call(this._hashtable, k))
+<span class="cstat-no" title="statement not covered" >        throw new Error('No entry for key  `' + k + '` present.');</span>
+      delete this._hashtable[k];
+      --this._size;
+    },
+    clear: function () {
+      this._hashtable = {};
+      this._size = 0;
+    },
+    get size() {
+      return this._size;
+    },
+    forEach: function (action) {
+      for (var k in this._hashtable)
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (Object.prototype.hasOwnProperty.call(this._hashtable, k))
+          action(k, this._hashtable[k]);
+    }
+  };
+  return StringHashtable;
+}();
+&nbsp;
+ko_indexed_repeat_synchronizer = function (ko, StringHashtable) {
+  var requestAnimationFrame = window.requestAnimationFrame.bind(window), cancelAnimationFrame = window.cancelAnimationFrame.bind(window);
+  /** @constructor */
+  function ElementWithBindingContext(element, bindingContext) {
+    var self = this;
+    self.element = element;
+    self.bindingContext = bindingContext;
+  }
+  /** @constructor */
+  function AddedItem(index, item, id, previousId) {
+    var self = this;
+    self.index = index;
+    self.item = item;
+    self.id = id;
+    self.previousId = previousId;
+  }
+  return function Synchronizer(configuration, bindingContext) {
+    var self = this,
+      // extract constants from the configuration
+      idSelector = configuration.idSelector, itemVariableName = configuration.itemVariableName, indexVariableName = configuration.indexVariableName, allowDeviation = configuration.allowDeviation, reportDeviation = configuration.reportDeviation, reportSynchronization = configuration.reportSynchronization, parent = configuration.parent, startMarker = configuration.startMarker, endMarker = configuration.endMarker, itemElementTemplate = configuration.itemElementTemplate,
+      // the core state -- when a synchronization is in progress, currentItems may be more current than itemElements
+      currentItems = null, itemElements = new StringHashtable(),
+      // id
+      synchronizedCount = 0,
+      // the number of items for which elements are present in the DOM (may deviate from itemElements.size())
+      // state of the current synchronization (if one is in progress)
+      step = 0,
+      // synchronization step counter
+      cursor = null,
+      // cursor into the DOM for phase one and two (collectNewItemsAndMarkDeados/collectCarcasses)
+      animationFrameRequest = null,
+      // request for the next step, if synchronization is incremental
+      addedItems = null,
+      // items for which no element exists (yet)
+      presumedDead = null,
+      // elements for removed items by id, may contain false positives for moved back items
+      carcasses = null;
+    // elements for definitely removed items (no false positives)
+    function startNewSynchronization(newItems) {
+      step = 0;
+      cursor = configuration.startMarker;
+      addedItems = [];
+      presumedDead = new StringHashtable();
+      currentItems = newItems;
+      if (allowDeviation)
+        initiateIncrementalSynchronization();
+      else
+        performImmediateSynchronization();
+    }
+    function performImmediateSynchronization() {
+      while (performSynchronizationStep())
+        ++step;
+      finalizeSynchronization();
+    }
+    function initiateIncrementalSynchronization() {
+      performIncrementalSynchronizationStep(new Date().getTime() + 15);  // TODO magic number, allow configuration?
+    }
+    function resumeIncrementalSynchronization() {
+      performIncrementalSynchronizationStep(new Date().getTime() + 40);  // TODO magic number, allow configuration?
+    }
+    function performIncrementalSynchronizationStep(timelimit) {
+      while (performSynchronizationStep()) {
+        ++step;
+        if (new Date().getTime() &gt; timelimit) {
+          reportDeviation();
+          animationFrameRequest = requestAnimationFrame(resumeIncrementalSynchronization);
+          return;
+        }
+      }
+      finalizeSynchronization();
+    }
+    function performSynchronizationStep() {
+      if (step &lt; currentItems.length())
+        collectNewItemsAndMarkDeados(step, currentItems.get(step));
+      else if (!carcasses)
+        collectCarcasses();
+      else if (addedItems.length)
+        if (configuration.allowElementRecycling &amp;&amp; carcasses.length)
+          performNecromancy(carcasses.pop(), addedItems.shift());
+        else
+          insertElementFor(addedItems.shift());
+      else
+        return incinerateCarcasses() &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >false;</span>
+      return true;
+    }
+    function collectNewItemsAndMarkDeados(index, item) {
+      var previousId = index ? idSelector(currentItems.get(index - 1)) : null;
+      var id = idSelector(item);
+      var elementWithBindingContext = itemElements.get(id);
+      if (elementWithBindingContext) {
+        elementWithBindingContext.element.style.display = '';
+        elementWithBindingContext.bindingContext[indexVariableName](index);
+        var notDeadAfterAll = presumedDead.get(id);
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (notDeadAfterAll) {
+<span class="cstat-no" title="statement not covered" >          presumedDead.remove(id);</span>
+<span class="cstat-no" title="statement not covered" >          parent.insertBefore(notDeadAfterAll, cursor.nextSibling);</span>
+<span class="cstat-no" title="statement not covered" >          cursor = notDeadAfterAll;</span>
+        } else {
+          while (elementWithBindingContext.element !== cursor.nextSibling)
+            presumeDead(cursor.nextSibling);
+          cursor = elementWithBindingContext.element;
+        }
+      } else {
+        addedItems.push(new AddedItem(index, item, id, previousId));
+      }
+    }
+    function collectCarcasses() {
+      carcasses = [];
+      var aliveAndKicking = currentItems.length() - addedItems.length;
+      for (var i = synchronizedCount - presumedDead.size - aliveAndKicking; i &gt; 0; --i)
+        presumeDead(cursor.nextSibling);
+      presumedDead.forEach(function (key, element) {
+        itemElements.remove(key);
+        carcasses.push(element);
+      });
+      presumedDead.clear();
+    }
+    function performNecromancy(carcass, addedItem) {
+      var revivedBindingContext = ko.contextFor(carcass);
+      configuration.reportElementRecycling(carcass, revivedBindingContext);
+      carcass.style.display = '';
+      insertNodeAfter(carcass, addedItem.previousId);
+      revivedBindingContext[itemVariableName](addedItem.item);
+      revivedBindingContext[indexVariableName](addedItem.index);
+      configuration.reportElementRecycled(carcass, revivedBindingContext);
+      itemElements.add(addedItem.id, new ElementWithBindingContext(carcass, revivedBindingContext));
+    }
+    function insertElementFor(newborn) {
+      var element = itemElementTemplate.cloneNode(true);
+      var contextExtension = {};
+      contextExtension[indexVariableName] = ko.observable(newborn.index);
+      contextExtension[itemVariableName] = ko.observable(newborn.item);
+      var newBindingContext = bindingContext.extend(contextExtension);
+      itemElements.add(newborn.id, new ElementWithBindingContext(element, newBindingContext));
+      ko.applyBindings(newBindingContext, element);
+      insertNodeAfter(element, newborn.previousId);
+      ++synchronizedCount;
+    }
+    function incinerateCarcasses() {
+      while (carcasses.length)
+        ko.removeNode(carcasses.pop());
+    }
+    function finalizeSynchronization() {
+      for (var i = 0; i &lt; carcasses.length; ++i)
+<span class="cstat-no" title="statement not covered" >        ko.removeNode(carcasses[i]);</span>
+      synchronizedCount = currentItems.length();
+      reset();
+      reportSynchronization();
+    }
+    function reset() {
+      step = 0;
+      cursor = null;
+      addedItems = null;
+      presumedDead = null;
+      carcasses = null;
+    }
+    function insertNodeAfter(node, previousId) {
+      var before = (previousId ? itemElements.get(previousId).element : startMarker).nextSibling;
+      parent.insertBefore(node, before);
+    }
+    function presumeDead(element) {
+      presumedDead.add(idFor(element), element);
+      element.style.display = 'none';
+      parent.insertBefore(element, endMarker);
+      return element;
+    }
+    function idFor(e) {
+      return idSelector(ko.contextFor(e)[itemVariableName]());
+    }
+    self.startOrRestartSynchronization = function (newItems) {
+      abortActiveSynchronization();
+      startNewSynchronization(newItems);
+    };
+    self.abortActiveSynchronization = abortActiveSynchronization;
+    function abortActiveSynchronization() {
+      if (!animationFrameRequest)
+        return;
+      cancelAnimationFrame(animationFrameRequest);
+      animationFrameRequest = null;
+      for (var i = 0; carcasses !== null &amp;&amp; i &lt; carcasses.length; ++i) {
+<span class="cstat-no" title="statement not covered" >        var element = carcasses[i];</span>
+<span class="cstat-no" title="statement not covered" >        itemElements.add(idFor(element), new ElementWithBindingContext(element, ko.contextFor(element)));</span>
+      }
+      reset();
+    }
+  };
+}(knockout, ko_indexed_repeat_string_hashtable);
+&nbsp;
+ko_indexed_repeat_binding = function (ko, accessors, Configuration, Synchronizer) {
+  var OPTION_FOR_EACH = 'forEach';
+  var binding = ko.bindingHandlers['indexedRepeat'] = {
+    'init': function (element, valueAccessor, allBindingsAccessor, viewModel, bindingContext) {
+      var value = valueAccessor();
+      var configuration = new Configuration(element, value);
+      var disposeIndicatorNode = configuration.disposeIndicatorNode;
+      configuration.parent.replaceChild(configuration.endMarker, element);
+      configuration.parent.insertBefore(configuration.startMarker, configuration.endMarker);
+      var synchronizer = new Synchronizer(configuration, bindingContext);
+      if (configuration.allowDeviation)
+        ko.utils.domNodeDisposal.addDisposeCallback(disposeIndicatorNode, function () {
+          synchronizer.abortActiveSynchronization();
+        });
+      var items = value[OPTION_FOR_EACH];
+      var Accessor = accessors.inferAccessor(items());
+      return {
+        'controlsDescendantBindings': true,
+        'subscribable': ko.computed(function () {
+          var newItems = new Accessor(items());
+          ko.ignoreDependencies(synchronizer.startOrRestartSynchronization, synchronizer, [newItems]);
+        }, null, { 'disposeWhenNodeIsRemoved': disposeIndicatorNode })
+      };
+    }
+  };
+  return binding;
+}(knockout, ko_indexed_repeat_accessors, ko_indexed_repeat_configuration, ko_indexed_repeat_synchronizer);
+ko_indexed_repeat = function (main) {
+  return main;
+}(ko_indexed_repeat_binding);return ko_indexed_repeat;
+}));</pre></td></tr>
+</table></pre>
+
+</div>
+<div class="footer">
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sun Apr 05 2015 23:14:49 GMT+0200 (CEST)</div>
+</div>
+<script src="../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../sorter.js"></script>
+</body>
+</html>
