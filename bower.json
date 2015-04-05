@@ -1,5 +1,4 @@
 {
-  "private": true,
   "name": "ko-indexed-repeat",
   "main": "dist/ko-indexed-repeat.js",
   "description": "Provides a knockout binding for progressive element repetition with minimal DOM manipulation.",
