@@ -1,41 +1,30 @@
 # ko-indexed-repeat [![Build Status](https://travis-ci.org/benschulz/ko-indexed-repeat.svg?branch=master)](https://travis-ci.org/benschulz/ko-indexed-repeat) [![Coverage Status](https://coveralls.io/repos/benschulz/ko-indexed-repeat/badge.svg?branch=master)](https://coveralls.io/r/benschulz/ko-indexed-repeat?branch=master)
 
-**ko-indexed-repeat** provides a [knockout](http://knockoutjs.com/) binding called `indexedRepeat`. In functionality it
-is similar to the `foreach` binding. The main difference is that `indexedRepeat` tries to minimize the amount of DOM
-manipulation in an effort to provide a smooth user experience. Beyond that it allows for incremental synchronization
-between view model and view.
+**ko-indexed-repeat** provides a [knockout](http://knockoutjs.com/) binding called `indexedRepeat`. In functionality it is similar to the `foreach` binding. The main difference is that `indexedRepeat` tries to minimize the amount of DOM manipulation in an effort to provide a smooth user experience. Beyond that it allows for incremental synchronization between view model and view.
 
-To reduce DOM activity `indexedRepeat` does not rely on `arrayChange` events, but rather a user-defined unique index *i:
-item→string*.
+To reduce DOM activity `indexedRepeat` does not rely on `arrayChange` events, but rather a user-defined unique index *i: item→string*.
 
 ## Binding Value
 
 ### forEach
 
-**Required**. The items for which the bound element is to be repeated. If the value is of length/size *n*, the bound
-element will be repeated *n* times.
+**Required**. The items for which the bound element is to be repeated. If the value is of length/size *n*, the bound element will be repeated *n* times.
 
-The value *must* be observable and *must* contain an array or a list, where a list is any object with a `length`
-property or method as well as a method `get: number→item` to access its elements. The values' types must be consistent
-for any given binding. I.e., if the value initially contained a list with a `length` property, it must always contain a
-list with a `length` property.
+The value *must* be observable and *must* contain an array or a list, where a list is any object with a `length` property or method as well as a method `get: number→item` to access its elements. The values' types must be consistent for any given binding. I.e., if the value initially contained a list with a `length` property, it must always contain a list with a `length` property.
 
 ### indexedBy
 
 **Required**. A function defining a unique index for all potential items.
 
-Functions of the form `function(x) { return x.id; }` may be abbreviated by the string denoting the property's name,
-in this case `'id'`. Values returned by the indexing function *must* be of type `string`.
+Functions of the form `function(x) { return x.id; }` may be abbreviated by a string denoting the property's name, in this case `'id'`. Values returned by the index function *must* be of type `string`.
 
 ### as
 
-**Optional**. Defaults to `'$item'`. Defines the variable name under which the current item is accessible in binding
-strings of the repeated elements and their descendants.
+**Optional**. Defaults to `'$item'`. Defines the variable name under which the current item is accessible in binding strings of the repeated elements and their descendants.
 
 ### at
 
-**Optional**. Defaults to `'$index'`. Defines the variable name under which the current item's index is accessible in
-binding strings of the repeated elements and their descendants.
+**Optional**. Defaults to `'$index'`. Defines the variable name under which the current item's index is accessible in binding strings of the repeated elements and their descendants.
 
 ### allowElementRecycling
 
@@ -51,18 +40,15 @@ binding strings of the repeated elements and their descendants.
 
 ### allowDeviation
 
-**Optional**. Defaults to `false`. Defines whether the displayed items (DOM) may deviate from the actual items
-(view model). The DOM will only deviate when it can not be synchronized quickly enough to avoid UI lock-up.
+**Optional**. Defaults to `false`. Defines whether the displayed items (DOM) may deviate from the actual items (view model). The DOM will only deviate when it can not be synchronized quickly enough to avoid UI lock-up.
 
 ### onDeviation
 
-**Optional**. Defaults to `function() {}`. Defines a handler function to be called whenever the displayed items deviate
-from the actual items. This option is irrelevant unless `allowDeviation` is set to `true`.
+**Optional**. Defaults to `function() {}`. Defines a handler function to be called whenever the displayed items deviate from the actual items. This option is irrelevant unless `allowDeviation` is set to `true`.
 
 ### onSynchronization
 
-**Optional**. Defaults to `function() {}`. Defines a handler function to be called whenever the displayed items have
-been synchronized with the actual items. The handler will still be called if `allowDeviation` is set to `false`.
+**Optional**. Defaults to `function() {}`. Defines a handler function to be called whenever the displayed items have been synchronized with the actual items. The handler will still be called if `allowDeviation` is set to `false`.
 
 ### data-repeat-bind (attribute)
 
