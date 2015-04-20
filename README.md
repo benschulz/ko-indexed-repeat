@@ -1,4 +1,4 @@
-# ko-indexed-repeat
+# ko-indexed-repeat [![Build Status](https://travis-ci.org/benschulz/ko-indexed-repeat.svg?branch=master)](https://travis-ci.org/benschulz/ko-indexed-repeat) [![Coverage Status](https://coveralls.io/repos/benschulz/ko-indexed-repeat/badge.svg?branch=master)](https://coveralls.io/r/benschulz/ko-indexed-repeat?branch=master)
 
 **ko-indexed-repeat** provides a [knockout](http://knockoutjs.com/) binding called `indexedRepeat`. In functionality it
 is similar to the `foreach` binding. The main difference is that `indexedRepeat` tries to minimize the amount of DOM
