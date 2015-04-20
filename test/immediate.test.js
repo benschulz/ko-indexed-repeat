@@ -1,24 +1,24 @@
 'use strict';
 
 define(['knockout', 'jquery', './tester.test'], function (ko, $, tester) {
+    var SOME = 10,
+        MANY = 2500;
 
     describe('Immediate repetition tests:', function () {
         it('The `onSynchronization`-handler should be called, once synchronization is done.', function (done) {
-            var itemCount = 10;
-            var container = tester.createContainer();
-            var inspector = tester.createInspector(container);
+            var itemCount = SOME;
 
-            tester.forEach(tester.generate(itemCount).items())
+            var repeat = tester.forEach(tester.generate(itemCount).items())
                 .incrementally()
                 .onSynchronization(function () {
-                    expect(inspector.elements().length).to.equal(itemCount);
+                    expect(repeat.elements().length).to.equal(itemCount);
                     done();
                 })
-                .insert.into(container);
+                .insert.anywhere.shortly();
         });
 
         it('The initial items should be displayed immediately.', function () {
-            var itemCount = 5000;
+            var itemCount = MANY;
 
             var repeat = tester.forEach(tester.generate(itemCount).items())
                 .immediately()
@@ -28,11 +28,11 @@ define(['knockout', 'jquery', './tester.test'], function (ko, $, tester) {
         });
 
         it('New items should be displayed immediately.', function () {
-            var itemCount = 5000;
-            var items = ko.observableArray([]);
-            var repeat = tester.forEach(items)
-                .immediately()
-                .insert.anywhere();
+            var itemCount = MANY,
+                items = ko.observableArray([]),
+                repeat = tester.forEach(items)
+                    .immediately()
+                    .insert.anywhere();
 
             items.push.apply(items, tester.generate(itemCount).items());
 

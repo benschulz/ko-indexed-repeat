@@ -1,39 +1,38 @@
 'use strict';
 
 define(['knockout', 'jquery', './tester.test'], function (ko, $, tester) {
+    var SOME = 10,
+        MANY = 2500;
+
 
     describe('Incremental repetition tests:', function () {
         it('The `onDeviation`-handler should be called, when displayed elements deviate from the underlying items.', function (done) {
-            var itemCount = 5000;
-            var container = tester.createContainer();
-            var inspector = tester.createInspector(container);
+            var itemCount = MANY;
 
-            tester.forEach(tester.generate(itemCount).items())
+            var repeat = tester.forEach(tester.generate(itemCount).items())
                 .onDeviation(function () {
-                    expect(inspector.elements().length).to.be.lessThan(itemCount);
+                    expect(repeat.elements().length).to.be.lessThan(itemCount);
                     done();
                     done = function () {}; // the onDeviation-handler might be called again before clean up is done
                 })
-                .insert.into(container);
+                .insert.anywhere.shortly();
         });
 
         it('The `onSynchronization`-handler should be called, once the displayed elements match the underlying items.', function (done) {
-            var itemCount = 5000;
-            var container = tester.createContainer();
-            var inspector = tester.createInspector(container);
+            var itemCount = MANY;
 
-            tester.forEach(tester.generate(itemCount).items())
+            var repeat = tester.forEach(tester.generate(itemCount).items())
                 .incrementally()
                 .onSynchronization(function () {
-                    expect(inspector.elements().length).to.equal(itemCount);
+                    expect(repeat.elements().length).to.equal(itemCount);
                     done();
                 })
-                .insert.into(container);
+                .insert.anywhere.shortly();
         });
 
         describe('The initial items should be displayed incrementally', function () {
             it('unless it takes little time to do so immediately.', function () {
-                var itemCount = 10;
+                var itemCount = SOME;
 
                 var repeat = tester.forEach(tester.generate(itemCount).items())
                     .incrementally()
@@ -42,7 +41,7 @@ define(['knockout', 'jquery', './tester.test'], function (ko, $, tester) {
                 expect(repeat.elements().length).to.equal(itemCount);
             });
             it('when it would take too long to do so immediately.', function () {
-                var itemCount = 5000;
+                var itemCount = MANY;
 
                 var repeat = tester.forEach(tester.generate(itemCount).items())
                     .incrementally()
@@ -54,7 +53,7 @@ define(['knockout', 'jquery', './tester.test'], function (ko, $, tester) {
 
         describe('Added items should be displayed incrementally', function () {
             it('unless it takes little time to do so immediately.', function () {
-                var itemCount = 10;
+                var itemCount = SOME;
                 var items = ko.observableArray([]);
                 var repeat = tester.forEach(items)
                     .incrementally()
@@ -65,7 +64,7 @@ define(['knockout', 'jquery', './tester.test'], function (ko, $, tester) {
                 expect(repeat.elements().length).to.equal(itemCount);
             });
             it('when it would take too long to do so immediately.', function () {
-                var itemCount = 5000;
+                var itemCount = MANY;
                 var items = ko.observableArray([]);
                 var repeat = tester.forEach(items)
                     .incrementally()
@@ -82,34 +81,32 @@ define(['knockout', 'jquery', './tester.test'], function (ko, $, tester) {
                 return {
                     itemsAndThen: function (action) {
                         var items = ko.observableArray(tester.generate(itemCount).items());
-                        var container = tester.createContainer();
-                        var inspector = tester.createInspector(container);
 
-                        tester.forEach(items)
+                        var repeat = tester.forEach(items)
                             .incrementally()
                             .onSynchronization(function () {
-                                if (inspector.elements().length === itemCount) {
+                                if (repeat.elements().length === itemCount) {
                                     window.setTimeout(function () {
-                                        action(items, inspector);
+                                        action(items, repeat);
                                     }, 1);
                                 }
                             })
-                            .insert.into(container);
+                            .insert.anywhere.shortly();
                     }
                 };
             }
 
             it('unless it takes little time to do so immediately.', function (done) {
-                setupRepeatOf(10).itemsAndThen(function (items, inspector) {
+                setupRepeatOf(SOME).itemsAndThen(function (items, repeat) {
                     items([]);
-                    expect(inspector.elements().length).to.equal(0);
+                    expect(repeat.elements().length).to.equal(0);
                     done();
                 });
             });
             it('when it would take too long to do so immediately.', function (done) {
-                setupRepeatOf(5000).itemsAndThen(function (items, inspector) {
+                setupRepeatOf(MANY).itemsAndThen(function (items, repeat) {
                     items(items().filter(function (item, index) {return index % 2 === 0;}));
-                    expect(inspector.elements().length).to.be.greaterThan(0);
+                    expect(repeat.elements().length).to.be.greaterThan(0);
                     done();
                 });
             });

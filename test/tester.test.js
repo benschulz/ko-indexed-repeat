@@ -10,6 +10,13 @@ define(['jquery', 'knockout'], function ($, ko) {
             ko.removeNode(toBeRemoved.pop());
     });
 
+    function createContainer(parent) {
+        var container = document.createElement('div');
+        (parent || document.body).appendChild(container);
+        toBeRemoved.push(container);
+        return container;
+    }
+
     function forEach(items) {
         items = ko.isObservable(items) ? items : ko.observableArray(items);
 
@@ -108,29 +115,39 @@ define(['jquery', 'knockout'], function ($, ko) {
     }
 
     function inserter(configuration) {
+        function anywhere() {
+            return into(createContainer());
+        }
+
+        anywhere.shortly = function () {
+            var container = createContainer();
+            window.setTimeout(() => into(container));
+            return new Inspector(container);
+        };
+
+        function into(container) {
+            var indexedRepeatElement = configuration.itemElementTemplate.cloneNode(true);
+            container.appendChild(indexedRepeatElement);
+
+            ko.applyBindingsToNode(indexedRepeatElement, {
+                indexedRepeat: {
+                    forEach: configuration.items,
+                    indexedBy: configuration.idSelector,
+                    as: configuration.itemVariableName,
+                    at: configuration.indexVariableName,
+                    allowDeviation: configuration.allowDeviation,
+                    onDeviation: configuration.onDeviation,
+                    onSynchronization: configuration.onSynchronization
+                }
+            });
+
+            return new Inspector(container);
+        }
+
         return {
             insert: {
-                anywhere: function () {
-                    return this.into(createContainer());
-                },
-                into: function (container) {
-                    var indexedRepeatElement = configuration.itemElementTemplate.cloneNode(true);
-                    container.appendChild(indexedRepeatElement);
-
-                    ko.applyBindingsToNode(indexedRepeatElement, {
-                        indexedRepeat: {
-                            forEach: configuration.items,
-                            indexedBy: configuration.idSelector,
-                            as: configuration.itemVariableName,
-                            at: configuration.indexVariableName,
-                            allowDeviation: configuration.allowDeviation,
-                            onDeviation: configuration.onDeviation,
-                            onSynchronization: configuration.onSynchronization
-                        }
-                    });
-
-                    return new Inspector(container);
-                }
+                anywhere: anywhere,
+                into: into
             }
         };
     }
@@ -149,18 +166,8 @@ define(['jquery', 'knockout'], function ($, ko) {
         self.element = function (index) { return $(container).children()[index]; };
     }
 
-    function createContainer(parent) {
-        var container = document.createElement('div');
-        (parent || document.body).appendChild(container);
-        toBeRemoved.push(container);
-        return container;
-    }
 
     return {
-        createContainer: createContainer,
-        createInspector: function (container) {
-            return new Inspector(container);
-        },
         forEach: forEach,
         generate: generate
     };
