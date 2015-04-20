@@ -7,7 +7,7 @@ define(['knockout', 'jquery', './tester.test'], function (ko, $, tester) {
             function parametrization(description, items) {
                 it(description, function () {
                     var repeat = tester.forEach(items)
-                        .insert.into(tester.createContainer());
+                        .insert.anywhere();
 
                     expect(repeat.elements().length).to.equal(items.length);
                 });
@@ -25,7 +25,7 @@ define(['knockout', 'jquery', './tester.test'], function (ko, $, tester) {
 
             var repeat = tester.forEach(['item'])
                 .repeat('<div data-repeat-bind="text: \'' + expectedText + '\'" ></div>')
-                .insert.into(tester.createContainer());
+                .insert.anywhere();
 
             expect(repeat.element(0).textContent).to.equal(expectedText);
         });
@@ -37,7 +37,7 @@ define(['knockout', 'jquery', './tester.test'], function (ko, $, tester) {
             var repeat = tester.forEach(items)
                 .repeat('<div data-repeat-bind="text: ' + itemVariableName + '" ></div>')
                 .as(itemVariableName)
-                .insert.into(tester.createContainer());
+                .insert.anywhere();
 
             for (var i = 0; i < items.length; ++i)
                 expect(repeat.element(i).textContent).to.equal(items[i]);
@@ -50,7 +50,7 @@ define(['knockout', 'jquery', './tester.test'], function (ko, $, tester) {
             var repeat = tester.forEach(items)
                 .repeat('<div data-repeat-bind="text: ' + indexVariableName + '" ></div>')
                 .at(indexVariableName)
-                .insert.into(tester.createContainer());
+                .insert.anywhere();
 
             for (var i = 0; i < items.length; ++i)
                 expect(repeat.element(i).textContent).to.equal(i.toString());
@@ -62,7 +62,7 @@ define(['knockout', 'jquery', './tester.test'], function (ko, $, tester) {
             try {
                 tester.forEach(items)
                     .indexedBy(function (item) {return item % 2;})
-                    .insert.into(tester.createContainer());
+                    .insert.anywhere();
                 done(new Error('Expected exception not raised.'));
             } catch (e) {
                 expect(e.message).to.contain('Key `1` is already taken.');
@@ -75,7 +75,7 @@ define(['knockout', 'jquery', './tester.test'], function (ko, $, tester) {
 
             var repeat = tester.forEach(items)
                 .indexedBy('id')
-                .insert.into(tester.createContainer());
+                .insert.anywhere();
 
             expect(repeat.elements().length).to.equal(items.length);
         });
@@ -86,7 +86,7 @@ define(['knockout', 'jquery', './tester.test'], function (ko, $, tester) {
                     repeat: function (markup) {
                         return tester.forEach(items)
                             .repeat(markup)
-                            .insert.into(tester.createContainer());
+                            .insert.anywhere();
                     }
                 };
             }
@@ -115,7 +115,7 @@ define(['knockout', 'jquery', './tester.test'], function (ko, $, tester) {
         it('When an item is replaced, its element should be reused.', function () {
             var items = ko.observableArray(['item a', 'item b', 'item c']);
             var repeat = tester.forEach(items)
-                .insert.into(tester.createContainer());
+                .insert.anywhere();
             var elementPreReplacement = repeat.element(1);
 
             items.splice(1, 1, 'foo');

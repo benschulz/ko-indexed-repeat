@@ -24,8 +24,6 @@ define([], function () {
     }
 
     function inferListAccessor(list) {
-        var s = typeof list.length;
-
         switch (typeof list.length) {
             case 'function':
                 return ListWithLengthMethod;

@@ -37,7 +37,7 @@ define(['knockout', 'jquery', './tester.test'], function (ko, $, tester) {
 
                 var repeat = tester.forEach(tester.generate(itemCount).items())
                     .incrementally()
-                    .insert.into(tester.createContainer());
+                    .insert.anywhere();
 
                 expect(repeat.elements().length).to.equal(itemCount);
             });
@@ -46,7 +46,7 @@ define(['knockout', 'jquery', './tester.test'], function (ko, $, tester) {
 
                 var repeat = tester.forEach(tester.generate(itemCount).items())
                     .incrementally()
-                    .insert.into(tester.createContainer());
+                    .insert.anywhere();
 
                 expect(repeat.elements().length).to.be.lessThan(itemCount);
             });
@@ -58,7 +58,7 @@ define(['knockout', 'jquery', './tester.test'], function (ko, $, tester) {
                 var items = ko.observableArray([]);
                 var repeat = tester.forEach(items)
                     .incrementally()
-                    .insert.into(tester.createContainer());
+                    .insert.anywhere();
 
                 items.push.apply(items, tester.generate(itemCount).items());
 
@@ -69,7 +69,7 @@ define(['knockout', 'jquery', './tester.test'], function (ko, $, tester) {
                 var items = ko.observableArray([]);
                 var repeat = tester.forEach(items)
                     .incrementally()
-                    .insert.into(tester.createContainer());
+                    .insert.anywhere();
 
                 items.push.apply(items, tester.generate(itemCount).items());
 

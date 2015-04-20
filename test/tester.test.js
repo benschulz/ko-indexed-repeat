@@ -110,6 +110,9 @@ define(['jquery', 'knockout'], function ($, ko) {
     function inserter(configuration) {
         return {
             insert: {
+                anywhere: function () {
+                    return this.into(createContainer());
+                },
                 into: function (container) {
                     var indexedRepeatElement = configuration.itemElementTemplate.cloneNode(true);
                     container.appendChild(indexedRepeatElement);
@@ -146,13 +149,15 @@ define(['jquery', 'knockout'], function ($, ko) {
         self.element = function (index) { return $(container).children()[index]; };
     }
 
+    function createContainer(parent) {
+        var container = document.createElement('div');
+        (parent || document.body).appendChild(container);
+        toBeRemoved.push(container);
+        return container;
+    }
+
     return {
-        createContainer: function (parent) {
-            var container = document.createElement('div');
-            (parent || document.body).appendChild(container);
-            toBeRemoved.push(container);
-            return container;
-        },
+        createContainer: createContainer,
         createInspector: function (container) {
             return new Inspector(container);
         },
