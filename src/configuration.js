@@ -18,7 +18,7 @@ define(['knockout'], function (ko) {
             return propertyNameOrSelectorFunction;
         else if (typeof propertyNameOrSelectorFunction === 'string')
             return function (item) {
-                return item[propertyNameOrSelectorFunction];
+                return '' + item[propertyNameOrSelectorFunction];
             };
 
         throw new Error('A repeat-binding must specify and indexedBy of type string (property name) or function (custom selector).');

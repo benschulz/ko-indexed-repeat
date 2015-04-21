@@ -2,35 +2,40 @@
 
 define(function () {
     function StringHashtable() {
-        this._size = 0;
-        this._hashtable = {};
+        this.__size = 0;
+        this.__hashtable = {};
     }
 
     StringHashtable.prototype = {
         add: function (k, v) {
-            if (Object.prototype.hasOwnProperty.call(this._hashtable, k))
+            if (Object.prototype.hasOwnProperty.call(this.__hashtable, k))
                 throw new Error('Key `' + k + '` is already taken.');
-            ++this._size;
-            this._hashtable[k] = v;
+            ++this.__size;
+            this.__hashtable[k] = v;
         },
         get: function (k) {
-            return this._hashtable[k];
+            return Object.prototype.hasOwnProperty.call(this.__hashtable, k)
+                ? this.__hashtable[k]
+                : null;
         },
         remove: function (k) {
-            if (!Object.prototype.hasOwnProperty.call(this._hashtable, k))
+            if (!Object.prototype.hasOwnProperty.call(this.__hashtable, k))
                 throw new Error('No entry for key  `' + k + '` present.');
-            delete this._hashtable[k];
-            --this._size;
+            delete this.__hashtable[k];
+            --this.__size;
         },
         clear: function () {
-            this._hashtable = {};
-            this._size = 0;
+            this.__hashtable = {};
+            this.__size = 0;
         },
-        get size() { return this._size; },
+        get size() { return this.__size; },
         forEach: function (action) {
-            for (var k in this._hashtable)
-                if (Object.prototype.hasOwnProperty.call(this._hashtable, k))
-                    action(k, this._hashtable[k]);
+            var keys = Object.keys(this.__hashtable);
+
+            for (var i = 0, l = keys.length; i < l; i++) {
+                var key = keys[i];
+                action(key, this.__hashtable[key]);
+            }
         }
     };
 

@@ -18,7 +18,7 @@ define(['jquery', 'knockout'], function ($, ko) {
     }
 
     function forEach(items) {
-        items = ko.isObservable(items) ? items : ko.observableArray(items);
+        items = ko.isSubscribable(items) ? items : ko.observable(items);
 
         return indexPreparator({
             items: items

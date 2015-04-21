@@ -30,6 +30,27 @@ define(['knockout', 'jquery', './tester.test'], function (ko, $, tester) {
                 .insert.anywhere.shortly();
         });
 
+        it('Swapping out the items in between synchronization steps is supported.', function (done) {
+            var itemCount = MANY,
+                initialItems = tester.generate(itemCount).items().map(v => v + 'a'),
+                intermediateItems = initialItems.map((v, i) => i % 2 ? v : '(' + v + ')'),
+                finalItems = intermediateItems.map((v, i) => i % 3 ? v : '[' + v + ']'),
+                items = ko.observableArray(initialItems);
+
+            var repeat = tester.forEach(items)
+                .incrementally()
+                .onDeviation(function () {
+                    if (items() === initialItems || items() === intermediateItems)
+                        window.setTimeout(() => items(items() === initialItems ? intermediateItems : finalItems));
+                })
+                .onSynchronization(function () {
+                    for (var i = 0; i < finalItems.length - 1; i += 5)
+                        expect(repeat.element(i).textContent).to.equal(i + ': ' + finalItems[i]);
+                    done();
+                })
+                .insert.anywhere.shortly();
+        });
+
         describe('The initial items should be displayed incrementally', function () {
             it('unless it takes little time to do so immediately.', function () {
                 var itemCount = SOME;

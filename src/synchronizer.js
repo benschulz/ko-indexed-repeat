@@ -43,7 +43,7 @@ define(['knockout', './string-hashtable'], function (ko, StringHashtable) {
         // state of the current synchronization (if one is in progress)
             step = 0, // synchronization step counter
             cursor = null, // cursor into the DOM for phase one and two (collectNewItemsAndMarkDeados/collectCarcasses)
-            animationFrameRequest = null, // request for the next step, if synchronization is incremental
+            animationFrameRequest = 0, // request for the next step, if synchronization is incremental
             addedItems = null, // items for which no element exists (yet)
             presumedDead = null, // elements for removed items by id, may contain false positives for moved back items
             carcasses = null; // elements for definitely removed items (no false positives)
@@ -73,6 +73,7 @@ define(['knockout', './string-hashtable'], function (ko, StringHashtable) {
         }
 
         function resumeIncrementalSynchronization() {
+            animationFrameRequest = 0;
             performIncrementalSynchronizationStep(new Date().getTime() + 40); // TODO magic number, allow configuration?
         }
 
@@ -101,7 +102,7 @@ define(['knockout', './string-hashtable'], function (ko, StringHashtable) {
                 else
                     insertElementFor(addedItems.shift());
             else
-                return incinerateCarcasses() && false;
+                return incinerateCarcasses() & false;
 
             return true;
         }
@@ -174,7 +175,6 @@ define(['knockout', './string-hashtable'], function (ko, StringHashtable) {
         }
 
         function finalizeSynchronization() {
-            for (var i = 0; i < carcasses.length; ++i) ko.removeNode(carcasses[i]);
             synchronizedCount = currentItems.length();
             reset();
             reportSynchronization();
