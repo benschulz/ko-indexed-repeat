@@ -216,7 +216,7 @@ define(['knockout', './string-hashtable'], function (ko, StringHashtable) {
                 return;
 
             cancelAnimationFrame(animationFrameRequest);
-            animationFrameRequest = null;
+            animationFrameRequest = 0;
 
             for (var i = 0; carcasses !== null && i < carcasses.length; ++i) {
                 var element = carcasses[i];

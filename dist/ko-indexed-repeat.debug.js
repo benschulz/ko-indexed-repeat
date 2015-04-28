@@ -42,7 +42,6 @@ ko_indexed_repeat_accessors = function () {
       return inferListAccessor(arrayOrList);
   }
   function inferListAccessor(list) {
-    var s = typeof list.length;
     switch (typeof list.length) {
     case 'function':
       return ListWithLengthMethod;
@@ -71,7 +70,7 @@ ko_indexed_repeat_configuration = function (ko) {
       return propertyNameOrSelectorFunction;
     else if (typeof propertyNameOrSelectorFunction === 'string')
       return function (item) {
-        return item[propertyNameOrSelectorFunction];
+        return '' + item[propertyNameOrSelectorFunction];
       };
     throw new Error('A repeat-binding must specify and indexedBy of type string (property name) or function (custom selector).');
   }
@@ -116,36 +115,38 @@ ko_indexed_repeat_configuration = function (ko) {
 
 ko_indexed_repeat_string_hashtable = function () {
   function StringHashtable() {
-    this._size = 0;
-    this._hashtable = {};
+    this.__size = 0;
+    this.__hashtable = {};
   }
   StringHashtable.prototype = {
     add: function (k, v) {
-      if (Object.prototype.hasOwnProperty.call(this._hashtable, k))
+      if (Object.prototype.hasOwnProperty.call(this.__hashtable, k))
         throw new Error('Key `' + k + '` is already taken.');
-      ++this._size;
-      this._hashtable[k] = v;
+      ++this.__size;
+      this.__hashtable[k] = v;
     },
     get: function (k) {
-      return this._hashtable[k];
+      return Object.prototype.hasOwnProperty.call(this.__hashtable, k) ? this.__hashtable[k] : null;
     },
     remove: function (k) {
-      if (!Object.prototype.hasOwnProperty.call(this._hashtable, k))
+      if (!Object.prototype.hasOwnProperty.call(this.__hashtable, k))
         throw new Error('No entry for key  `' + k + '` present.');
-      delete this._hashtable[k];
-      --this._size;
+      delete this.__hashtable[k];
+      --this.__size;
     },
     clear: function () {
-      this._hashtable = {};
-      this._size = 0;
+      this.__hashtable = {};
+      this.__size = 0;
     },
     get size() {
-      return this._size;
+      return this.__size;
     },
     forEach: function (action) {
-      for (var k in this._hashtable)
-        if (Object.prototype.hasOwnProperty.call(this._hashtable, k))
-          action(k, this._hashtable[k]);
+      var keys = Object.keys(this.__hashtable);
+      for (var i = 0, l = keys.length; i < l; i++) {
+        var key = keys[i];
+        action(key, this.__hashtable[key]);
+      }
     }
   };
   return StringHashtable;
@@ -181,7 +182,7 @@ ko_indexed_repeat_synchronizer = function (ko, StringHashtable) {
       // synchronization step counter
       cursor = null,
       // cursor into the DOM for phase one and two (collectNewItemsAndMarkDeados/collectCarcasses)
-      animationFrameRequest = null,
+      animationFrameRequest = 0,
       // request for the next step, if synchronization is incremental
       addedItems = null,
       // items for which no element exists (yet)
@@ -209,6 +210,7 @@ ko_indexed_repeat_synchronizer = function (ko, StringHashtable) {
       performIncrementalSynchronizationStep(new Date().getTime() + 15);  // TODO magic number, allow configuration?
     }
     function resumeIncrementalSynchronization() {
+      animationFrameRequest = 0;
       performIncrementalSynchronizationStep(new Date().getTime() + 40);  // TODO magic number, allow configuration?
     }
     function performIncrementalSynchronizationStep(timelimit) {
@@ -233,7 +235,7 @@ ko_indexed_repeat_synchronizer = function (ko, StringHashtable) {
         else
           insertElementFor(addedItems.shift());
       else
-        return incinerateCarcasses() && false;
+        return incinerateCarcasses() & false;
       return true;
     }
     function collectNewItemsAndMarkDeados(index, item) {
@@ -294,8 +296,6 @@ ko_indexed_repeat_synchronizer = function (ko, StringHashtable) {
         ko.removeNode(carcasses.pop());
     }
     function finalizeSynchronization() {
-      for (var i = 0; i < carcasses.length; ++i)
-        ko.removeNode(carcasses[i]);
       synchronizedCount = currentItems.length();
       reset();
       reportSynchronization();
@@ -329,7 +329,7 @@ ko_indexed_repeat_synchronizer = function (ko, StringHashtable) {
       if (!animationFrameRequest)
         return;
       cancelAnimationFrame(animationFrameRequest);
-      animationFrameRequest = null;
+      animationFrameRequest = 0;
       for (var i = 0; carcasses !== null && i < carcasses.length; ++i) {
         var element = carcasses[i];
         itemElements.add(idFor(element), new ElementWithBindingContext(element, ko.contextFor(element)));
